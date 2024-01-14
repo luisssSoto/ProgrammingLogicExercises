@@ -6,8 +6,5 @@ def solution(inputArray):
             largestProduct=result
     return largestProduct
 
-#create a variable calls largestProduct
-# iterar in the array
-#return largest adjacent elments product
-largestNumber=solution([3,6,-2,-5,7,3])
-print(largestNumber)
+#largestNumber=solution([3,6,-2,-5,7,3])
+#print(largestNumber)
