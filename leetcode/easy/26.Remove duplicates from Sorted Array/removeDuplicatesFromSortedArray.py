@@ -1,19 +1,18 @@
 """Remove Duplicates From Sorted Array"""
 def remove_duplicates(nums):
     count = 0
+    duplicates_index = []
     for i in range(len(nums) - 1):
-        for j in range(i + 1, len(nums)):
-            if nums[i] == nums[j]:
-                count += 1
-                del nums[j]
-                nums.insert(0, 'z')
-    for k in range(count):
-        del nums[0]
+        if nums[i] == nums[i + 1]:
+            duplicates_index.append(i)
+    for index in duplicates_index:
+        del nums[index - count]
+        count += 1
     return len(nums)
-
-test1 = [0,0,0,0,0]
+            
+test0 = [0,0,1,1,1,2,2,3,3,4]
+test1 = [1,1,2]
 print(remove_duplicates(test1))
-
 
 #1. input: integer array
 #   output: integer value: the length of unique values inside the modified array previously pass
@@ -33,3 +32,5 @@ print(remove_duplicates(test1))
 #   return the length of the array
 
 #4. coding but be careful with delete instruction
+
+# Above approach wasn't work, 😕 but I found another one ☺️
