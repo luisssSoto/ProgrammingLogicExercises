@@ -34,3 +34,12 @@ print(remove_duplicates(test1))
 #4. coding but be careful with delete instruction
 
 # Above approach wasn't work, 😕 but I found another one ☺️
+
+'''smarter approach and reducess time complexity'''
+def removeDuplicates(nums):
+        nums[:]=list(sorted(set(nums)))
+        print(nums)
+        return len(nums)
+
+test0 = [1,1,2]
+print(removeDuplicates(test0))
