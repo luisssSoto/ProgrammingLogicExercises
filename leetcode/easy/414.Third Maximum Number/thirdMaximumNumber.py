@@ -1,14 +1,17 @@
 """Third Maximum Number"""
 def third_maximum_number(nums):
-    if len(nums) <= 2:
+    set_nums = set(nums)
+    if len(set_nums) <= 2:
         return max(nums)
     else:
-        set_nums = set(nums)
-        print(set_nums)
+        list_nums = list(set_nums)
+        list_nums.sort() 
+        list_nums = list_nums[-3:]
+    return min(list_nums)
+        
 
-l = [x for x in range(3, 0, -1)]
-l.append(0)
-print(third_maximum_number(l))
+data1 = [-4,-5,-3,-2,-1]
+print(third_maximum_number(data1))
 
 '''
 1.
