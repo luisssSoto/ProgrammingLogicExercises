@@ -45,6 +45,7 @@ System.out.println("The Array has a capacity of " + capacity);
 Running this code will give the following output:
 
 The Array has a capacity of 6
+
 Yup, it's a bit confusing that you need to access the capacity of an Array by 
 using .length. Unfortunately, this is just something you'll need to get used to.
 
@@ -56,6 +57,22 @@ the Array.
 
 You might have noticed that we've been using a length variable in our previous 
 examples, to keep track of the next empty index.
+
+// Create a new array with a capacity of 6.
+int[] array = new int[6];
+
+// Current length is 0, because it has 0 elements.
+int length = 0;
+
+// Add 3 items into it.
+for (int i = 0; i < 3; i++) {
+    array[i] = i * i;
+    // Each time we add an element, the length goes up by one.
+    length++;
+}
+
+System.out.println("The Array has a capacity of " + array.length);
+System.out.println("The Array has a length of " + length);
 
 Running this code will give the following output:
 
@@ -72,6 +89,11 @@ Given a binary array, find the maximum number of consecutive 1s in this array.
 
 And here is the code template you're given.
 
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        
+    }
+}
 
 The only parameter is nums; an Array. You couldn't possibly solve this question 
 without knowing how long nums is. Well, luckily it's straightforward. When an 
@@ -82,6 +104,16 @@ size to hold all of it's data. We can, therefore, use .length.
 Be careful though, Array's are 0-indexed. The capacity/ length is a number of 
 items, not a highest index. The highest index is .length - 1. Therefore, to 
 iterate over all items in the Array, we can do the following.
+
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        // Hint: Initialise and declare a variable here to 
+        // keep track of how many 1's you've seen in a row.
+        for (int i = 0; i < nums.length; i++) {
+            // Do something with element nums[i].
+        }
+    }
+}
 
 And that is the basics of Arrays that you'll need to get started! In the next 
 chapter, we'll look at some of the fundamental techniques we use to work with Arrays.

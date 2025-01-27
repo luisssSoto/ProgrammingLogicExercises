@@ -1,5 +1,5 @@
 What Is an Array?
-Report Issue
+
 An Array is a collection of items. The items could be integers, strings, DVDs, 
 games, books—anything really. The items are stored in neighboring (contiguous) 
 memory locations. Because they're stored together, checking through the entire 
@@ -19,6 +19,26 @@ specify the type of item that will be going into the Array.
 
 In Java, we use the following code to create an Array to hold up to 15 DVDs. 
 Note that we've also included a simple definition of a DVD for clarity.
+
+// The actual code for creating an Array to hold DVD's.
+DVD[] dvdCollection = new DVD[15];
+
+// A simple definition for a DVD.
+public class DVD {
+    public String name;
+    public int releaseYear;
+    public String director;
+
+    public DVD(String name, int releaseYear, String director) {
+        this.name = name;
+        this.releaseYear = releaseYear;
+        this.director = director;
+    }
+
+    public String toString() {
+        return this.name + ", directed by " + this.director + ", released in " + this.releaseYear;
+    }
+}
 
 After running the above code, we now have an Array called dvdCollection, with 
 15 places in it. Each place can hold one DVD. At the start, there are no DVD's 

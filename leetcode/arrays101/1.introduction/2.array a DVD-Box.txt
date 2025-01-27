@@ -1,5 +1,5 @@
-  Array - A DVD box?
-Report Issue
+Array - A DVD box?
+
 Suppose you had a bunch of DVDs at home that you wanted to arrange neatly. 
 What would be the ideal choice for storing such a thing? You could find a 
 cardboard box (or some other box) big enough to arrange all of the DVDs neatly, 
@@ -15,12 +15,12 @@ All the DVDs would be inside a plastic cover.
 The cover would have the name of the movie, the cast, and all sorts of other details.
 All the covers would be of exactly the same size and would contain just one, 
 and only one, DVD.
+
 You might not actually name the DVD box, but when you want your sister to fetch 
 a DVD, you'd tell her that the DVD is inside your "DVD box", and she would 
 instantly know where to find the box. This is a very simple yet realistic 
 scenario that is easy to understand and relate to. So, now let us move over to 
 the world of computers and port this example to programming.
-
 
 Suppose you were told that you needed to build some software to keep track of 
 all the DVDs in an inventory. This is the exact same scenario that we just 
