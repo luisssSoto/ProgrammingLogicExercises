@@ -4,17 +4,8 @@ def merge_sorted_array(nums1, m, nums2, n):
         del nums1[i]
     for j in range(len(nums2)-1, n-1, -1):
         del nums2[j]
-    print(nums1)
-    print(nums2)
     nums1 += nums2
-    print(nums1)
-    is_sorted = False
-    while is_sorted == False:
-        is_sorted = True
-        for k in range(len(nums1)-1):
-            if nums1[k] > nums1[k+1]:
-                nums1[k], nums1[k+1] = nums1[k+1], nums1[k]
-                is_sorted = False
+    nums1.sort()
     return nums1
 
 nums1 = [0]

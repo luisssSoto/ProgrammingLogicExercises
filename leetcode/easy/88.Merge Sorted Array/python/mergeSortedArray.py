@@ -1,20 +1,25 @@
 """Merge Sorted Array"""
 def merge(nums1, m, nums2, n):
-    for i in range(len(nums1)):
-        if i >= m:
-            del nums1[-1]
-    for j in range(len(nums2)):
-        if j >= n:
-            del nums2[-1]
-    nums1 += nums2
-    nums1.sort()
-    print(nums1)
-    print(nums2)
+    if n == 0:
+        return nums1
+    else:
+        nums2_index = 0
+        for i in range(m, len(nums1), 1):
+            nums1[i] = nums2[nums2_index]
+            nums2_index+=1
+    # burble sort approach, alternatively use sort() method (it is faster)
+    is_it_sorted = False
+    while is_it_sorted == False:
+        is_it_sorted = True
+        for i in range(len(nums1) - 1):
+            if nums1[i] > nums1[i + 1]:
+                is_it_sorted = False
+                nums1[i], nums1[i + 1] = nums1[i + 1], nums1[i]
     
-nums1 = [0]
-m = 0
-nums2 = [1] 
-n = 1
+nums1 = [1,2,3,0,0,0]
+m = 3
+nums2 = [2,5,6] 
+n = 3
 merge(nums1, m, nums2, n)
 
 #1. input: two arrays and two integers
@@ -36,9 +41,3 @@ merge(nums1, m, nums2, n)
 
 #4. new plan
 #   delete the elements in-place
-
-import random
-random.seed()
-
-random_list = []
-print(random.randint(0, 10))
