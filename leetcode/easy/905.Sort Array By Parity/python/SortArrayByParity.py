@@ -39,3 +39,19 @@ else
 
 4. index is moving when we work in-place be careful
 '''
+
+'''Better approach:
+Two pointer technique'''
+
+def sort_array_by_parity(nums):
+    writePointer = 0
+    for readPointer in range(len(nums)):
+        if nums[readPointer] % 2 == 0:
+            nums[writePointer], nums[readPointer] = nums[readPointer], nums[writePointer]
+            writePointer += 1
+    return nums
+
+# Testing
+nums = [3,1,2,4]
+nums1 = [0]
+print(sort_array_by_parity(nums))
