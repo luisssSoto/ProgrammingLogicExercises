@@ -9,9 +9,6 @@ def dominant_index(nums):
             greater_num_index = i
         if nums[i] > previous_greater_num and nums[i] < greater_num: 
             previous_greater_num = nums[i]
-    print(previous_greater_num)
-    print(greater_num)
-    print(greater_num_index)
     if previous_greater_num * 2 <= greater_num:
         return greater_num_index
     else:
