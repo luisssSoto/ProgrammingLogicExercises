@@ -31,6 +31,26 @@ def add_binary(a, b):
         bin_num += bi
     return bin_num
 
-test_a = '1011'
-test_b = '1010'
+test_a = '1010'
+test_b = '1011'
 print(add_binary(test_a, test_b))
+
+
+# More pythonistic
+def add_binary1(a, b):
+    dec_a, dec_b, count = 0, 0, 0
+    for i in range(len(a) - 1, -1, -1):
+        if a[i] == '1':
+            dec_a += 2 ** count
+        count += 1
+    count = 0
+    for i in range(len(b) - 1, -1, -1):
+        if b[i] == '1':
+            dec_b += 2 ** count
+        count += 1
+    bin_num = bin(dec_a + dec_b)
+    str_bin = bin_num[2:]
+    return str_bin
+    
+
+print(add_binary1(test_a,test_b))
