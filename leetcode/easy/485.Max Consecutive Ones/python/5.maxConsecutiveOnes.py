@@ -6,29 +6,17 @@ def find_max_consecutive_ones(nums):
         if nums[i] == 1:
             count += 1
         else:
+            max_consecutive_ones = max(max_consecutive_ones, count)
             count = 0
-        if count > max_consecutive_ones:
-            max_consecutive_ones = count
-    return max_consecutive_ones
+    return max(max_consecutive_ones, count)
 
+# Testing
 test1 = [1]
 print(find_max_consecutive_ones(test1))
-print(len(test1))
-print(test1.count(0))
 
-#1. input: array
-#   output: integer
 
-#2. create a count
-#   iterate
-#   conditional
-
-#3. count variable
-#   greater count
-#   iterate the array
-#   conditional if the element is 1 count += 1
-#   else: conditional if the count is greater thant greaterCount replace the value count = 0
-#   else count = 0
-#   return greaterCount
-
-#4. a little doubt at the end carefully
+'''
+Complexity Analysis:
+Time complexity: O(N) Where N is the number of elements in the array
+Space complexity: O(1) We do not use any extra space
+'''

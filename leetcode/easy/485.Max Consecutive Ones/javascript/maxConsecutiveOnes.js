@@ -2,40 +2,28 @@
 /**
  * @param {number[]} nums
  * @return {number}
+ * @author AlexSoto
  */
 var findMaxConsecutiveOnes = function (nums) {
     let countOnes = 0;
     let greatestSequence = 0;
-    for (let index in nums) {
-        if (nums[index] === 1) {
-            countOnes++;
-        };
-        if (nums[index] === 0 || index == nums.length - 1) {
-            if (countOnes > greatestSequence) {
-                greatestSequence = countOnes;
-                countOnes = 0;
-            } else {
-                countOnes = 0;
-            };
-        };
-    };
-    return greatestSequence;
-};
+    for (let i = 0; i < nums.length; i ++) {
+        if (nums[i] === 1) {
+            countOnes += 1;
+        } else {
+            greatestSequence = Math.max(greatestSequence, countOnes);
+            countOnes = 0;
+        }        
+    }
+    return Math.max(greatestSequence, countOnes)
+}; 
 
 //Testing 
 let n = [1, 1, 0, 1, 1, 1]
 console.log(findMaxConsecutiveOnes(n));
 
-
-/*
-1. Understand
-2. Break it down
-iterate the array
-create a variable to count the greatest sequently 1s
-create anothe to save the greatest value
-if is 1 score a point if not set up to 0 again
-if that score is greater than the current greatest sustitute the value
-return the greatest variable
-3. Plan your approach
-4. Test your logic
+/**
+ * Complexity Analysis:
+ * Time complexity = O(N) Where N is the number of elements in the array
+ * Space complexity = O(1) We do not use any extra space
  */
