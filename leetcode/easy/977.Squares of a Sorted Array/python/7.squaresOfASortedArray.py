@@ -7,16 +7,16 @@ def sorted_squares(nums):
 test1 = [-4,-1,0,3,10]
 print('t', sorted_squares(test1))
 
-test1 = [16,1,0,9,100]
-is_sort = False
+'''Time Complexity: O(NlogN), where N is the length of A.
 
-while is_sort == False:
-    is_sort = True
-    for i in range(len(test1)-1):
-        if test1[i] > test1[i + 1]:
-            test1[i], test1[i + 1] = test1[i + 1], test1[i]
-            is_sort = False
-    print(test1)
+Space complexity : O(N) or O(logN)
+
+The space complexity of the sorting algorithm depends on the implementation of each program language.
+
+For instance, the list.sort() function in Python is implemented with the Timsort algorithm whose space complexity is O(N).
+
+In Java, the Arrays.sort() is implemented as a variant of quicksort algorithm whose space complexity is O(logN). However, if the array is highly structured (has few sorted subarrays), then linear space may be used instead.'''
+
 
 
 #1. input: non-decreasing list
@@ -39,3 +39,25 @@ while is_sort == False:
 #   newList[less_value[i]], thisElement = thisElement
 
 #4. sort the list with the well-known method sort
+
+'''Approach 2: Two Pointer Technique'''
+def sorted_squares(nums):
+    insert_pointer = right_pointer = len(nums) - 1
+    left_pointer = 0
+    sorted_square_array = nums[:]
+    for insert_pointer in range(insert_pointer, -1, -1):
+        if abs(nums[left_pointer]) < abs(nums[right_pointer]):
+            square = nums[right_pointer] ** 2
+            right_pointer -= 1
+        else:
+            square = nums[left_pointer] ** 2
+            left_pointer += 1
+        sorted_square_array[insert_pointer] = square
+    return sorted_square_array
+
+test1 = [-4,-1,0,3,10]
+print(sorted_squares(test1))
+
+'''Complexity Analysis:
+Time Complexity: O(N), where N is the length of A.
+Space Complexity: O(N) if you take output into account and O(1) otherwise.'''
