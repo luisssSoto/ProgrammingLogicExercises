@@ -1,4 +1,5 @@
 """Merge Sorted Array"""
+# Approaching 1: Merge and sort
 def merge(nums1, m, nums2, n):
     if n == 0:
         return nums1
@@ -22,22 +23,51 @@ nums2 = [2,5,6]
 n = 3
 merge(nums1, m, nums2, n)
 
-#1. input: two arrays and two integers
-#   output: one array of integers as a result of the merge two arrays according
-#   to the amount of elements in m and n parameters
+'''Time complexity: O((n+m)log(n+m)).
 
-#2. Doing a lists according the m and n variables
-#   Merged them into a nums1
-#   Sort the nums1 list
+The cost of sorting a list of length x using a built-in sorting algorithm is O(xlogx). 
+Because in this case, we're sorting a list of length m+n, we get a total time complexity 
+of O((n+m)log(n+m)).
 
-#3. conditional statement if m < 1 then create an empty list
-#   else then
-#   nums1 = nums1 with a length m
-#   conditional statement if n < 1 then create an empty list
-#   else then
-#   nums2 = nums2 with a length n
-#   nums1 += nums2
-#   nums1 use sort method and it's all
+Space complexity: O(n), but it can vary.
 
-#4. new plan
-#   delete the elements in-place
+Most programming languages have a built-in sorting algorithm that uses 
+O(n) space.'''
+
+# Approach 2: Three pointers technique
+def merge(nums1, m, nums2, n):
+    pointer1 = m - 1
+    pointer2 = n - 1
+    for pointer3 in range(m + n - 1, -1, -1):
+        if pointer1 >= 0 and pointer2 >= 0:
+            if nums1[pointer1] > nums2[pointer2]:
+                nums1[pointer3] = nums1[pointer1]
+                pointer1 -= 1
+            elif nums1[pointer1] <= nums2[pointer2]:
+                nums1[pointer3] = nums2[pointer2]
+                pointer2 -= 1
+        elif pointer1 >= 0:
+            nums1[pointer3] = nums1[pointer1]
+            pointer1 -= 1
+        else:
+            nums1[pointer3] = nums2[pointer2]
+            pointer2 -= 1
+    return nums1
+
+# Testing
+nums1 = [1]
+m = 1
+nums2 = [0] 
+n = 0
+
+print(merge(nums1, m, nums2, n))
+
+'''Complexity Analysis
+
+Time complexity: O(n+m).
+
+Same as Approach 2.
+
+Space complexity: O(1).
+
+Unlike Approach 2, we're not using an extra array.'''
