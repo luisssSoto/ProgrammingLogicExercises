@@ -76,3 +76,19 @@ def removeDuplicates(nums):
 
 test0 = [1,1,2]
 print(removeDuplicates(test0))
+
+def remove_duplicates(nums):
+    writer_pointer = 0
+    for reader_pointer in range(len(nums) - 1):
+        if nums[reader_pointer] != nums[reader_pointer + 1]:
+            writer_pointer += 1
+            nums[writer_pointer] = nums[reader_pointer + 1]
+    print(nums)
+    return writer_pointer + 1
+
+data1 = [0,0,1,1,1,2,2,3,3,4]
+data2 = [1,1,2]
+data3 = [1,2]
+data4 = [1,2,3]
+test0 = [1,1,2]
+print(remove_duplicates(data4))
