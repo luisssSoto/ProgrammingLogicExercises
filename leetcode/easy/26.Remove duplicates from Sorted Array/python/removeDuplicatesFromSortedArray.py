@@ -1,4 +1,5 @@
 """Remove Duplicated from Sorted Array"""
+
 #Exceeds the time limit
 def remove_duplicates(nums):
     if len(nums) <= 1:
@@ -77,18 +78,27 @@ def removeDuplicates(nums):
 test0 = [1,1,2]
 print(removeDuplicates(test0))
 
+# Approach 1: Two Pointers Technique
 def remove_duplicates(nums):
-    writer_pointer = 0
-    for reader_pointer in range(len(nums) - 1):
-        if nums[reader_pointer] != nums[reader_pointer + 1]:
+    writer_pointer = 1
+    for reader_pointer in range(1, len(nums)):
+        if nums[reader_pointer] != nums[reader_pointer - 1]:
+            nums[writer_pointer] = nums[reader_pointer]
             writer_pointer += 1
-            nums[writer_pointer] = nums[reader_pointer + 1]
     print(nums)
-    return writer_pointer + 1
+    return writer_pointer
 
+# Testing
 data1 = [0,0,1,1,1,2,2,3,3,4]
 data2 = [1,1,2]
 data3 = [1,2]
 data4 = [1,2,3]
 test0 = [1,1,2]
 print(remove_duplicates(data4))
+
+'''Complexity Analysis:
+Let N be the size of the input array.
+
+Time Complexity: O(N), since we only have 2 pointers, and both the pointers will traverse the array at most once.
+
+Space Complexity: O(1), since we are not using any extra space.'''
