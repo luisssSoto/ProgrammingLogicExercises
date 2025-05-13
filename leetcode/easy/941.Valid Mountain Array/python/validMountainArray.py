@@ -1,4 +1,5 @@
 """Valid Mountain Array"""
+# My Approach
 def valid_mountain_array(arr):
     if len(arr) < 3:
         return False
@@ -42,3 +43,31 @@ print(l.index(m))
 #     if all the tests pass so now return True
 
 # 4. coding you can find the greater with max function 
+
+# Approach 1: One Pass
+def valid_mountain_array(arr):
+    i = 0
+    while i + 1 < len(arr) and arr[i] < arr[i + 1]:
+        i += 1
+    if i == 0 or i == len(arr) -1:
+        return False
+    while i + 1 < len(arr) and arr[i] > arr[i + 1]:
+        i += 1
+    return i == len(arr) - 1
+
+# Testing 
+dataTest0 = [2,1]
+dataTest1 = [3,5,5]
+dataTest2 = [0,3,2,1]
+dataTest3 = [0,2,3,4,5,2,1,0]
+dataTest4 = [0,2,3,4,5,2]
+dataTest5 = [9,8,7,6,5,4,3,2,1,0]
+dataTest6 = [2,1,2,3,5,7,9,10,12,14,15,16,18,14,13]
+
+print(valid_mountain_array(dataTest6))
+
+'''Complexity Analysis
+
+Time Complexity: O(N), where N is the length of A.
+
+Space Complexity: O(1).'''

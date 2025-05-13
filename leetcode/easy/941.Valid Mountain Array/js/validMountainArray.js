@@ -13,6 +13,7 @@
 // 4. if isItAscending === false... return false
 // 5. return true
 
+// My Approach
 var validMountainArray = function(arr) {
     if (arr.length < 3) {
         return false;
@@ -43,3 +44,31 @@ let nums1 = [2,1];
 let nums2 = [3,5,5];
 let nums3 = [0,3,2,1];
 console.log(validMountainArray(nums3))
+
+// Approach 1: One Pass
+var validMountainArray = function(arr) {
+    let i = 0;
+    while (i + 1 < arr.length && arr[i] < arr[i + 1]) {
+        i++;
+        console.log(i);
+    };
+    if (i === 0 || i === arr.length -1) {
+        return false;
+    };
+    console.log(arr[i], " ", arr[i + 1]);
+    while (i + 1 < arr.length && arr[i] > arr[i + 1]) {
+        i++
+        console.log(i);
+    };
+    return i === arr.length -1;
+};
+// Testing
+let dataTest0 = [0,3,2,1];
+console.log(validMountainArray(dataTest0));
+/**
+ * Complexity Analysis
+
+Time Complexity: O(N), where N is the length of A.
+
+Space Complexity: O(1).
+ */

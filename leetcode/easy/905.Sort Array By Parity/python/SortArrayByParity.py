@@ -55,3 +55,22 @@ def sort_array_by_parity(nums):
 nums = [3,1,2,4]
 nums1 = [0]
 print(sort_array_by_parity(nums))
+
+# Approach 1: Two Pointers Technique
+def sort_array_by_parity(nums):
+    write_pointer = 0
+    for read_pointer in range(len(nums)):
+        if nums[read_pointer] % 2 == 0:
+            nums[write_pointer], nums[read_pointer] = nums[read_pointer], nums[write_pointer]
+            write_pointer += 1
+    return nums
+
+# Testing
+nums0 = [3,1,2,4]
+nums1 = [0]
+
+print(sort_array_by_parity(nums1))
+
+'''Complexity Analysis:
+ * Time complexity: O(N)
+ * Space complexity: O(1)'''
