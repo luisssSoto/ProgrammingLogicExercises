@@ -13,6 +13,7 @@
 // .. writePointer += 1
 // 3. return nums 
 
+// My Approach: Two Pointers Technique
 var sortArrayByParity = function(nums) {
     let writePointer = 0;
     for (let readPointer = 0; readPointer < nums.length; readPointer++) {
@@ -30,3 +31,8 @@ var sortArrayByParity = function(nums) {
 let nums = [3,1,2,4];
 let nums1 = [0];
 console.log(sortArrayByParity(nums1));
+
+/**Complexity Analysis:
+ * Time complexity: O(N)
+ * Space complexity: O(1)
+ */
