@@ -1,4 +1,5 @@
 """Replace Elements with Greatest Element on Right Side"""
+# Approach 1: Reverse for
 def replace_elements(arr):
     high = arr[-1]
     for i in range(len(arr)-2, -1, -1):
@@ -7,6 +8,10 @@ def replace_elements(arr):
         high = max(high, temp)
     arr[-1] = -1
     return arr
+
+'''Complexity Analysis:
+Time complexity: O(N)
+Space complexity: O(1)'''
 
 #This method exceeds runtime
 def replace_elements(arr):
@@ -46,7 +51,4 @@ print(replace_elements(test1))
     arr[i] = greatest 
     end of the first loop
 4. coding carefully
-
-    
-    
 '''
