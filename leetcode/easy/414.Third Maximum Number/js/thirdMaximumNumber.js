@@ -57,3 +57,36 @@ let nums1 = [1,2];
 let nums2 = [2,2,3,1];
 let nums3 = [1,2,2,5,3,5];
 console.log(thirdMax(nums3));
+
+// My Approach
+var thirdMax = function(nums) {
+    console.log(nums);
+    nums.sort((a, b) => a - b);
+    console.log(nums);
+    let greatestNum = nums[nums.length - 1];
+    let index = nums.length - 2;
+    let tries = 1;
+    while (index >= 0) {
+        if (nums[index] < greatestNum) {
+            greatestNum = nums[index];
+            tries ++;
+        };
+        if (tries === 3) {
+            break;
+        };
+        if (index === 0) {
+            return nums[nums.length - 1];
+        };
+        index--;
+     };
+     return greatestNum;
+};
+
+// Testing
+let dataTest0 = [3,2,1];
+console.log(thirdMax(dataTest0));
+
+/**Complexity Analysis
+Time Complexity: O(NlogN)
+Space Complexity: O(1) */
+

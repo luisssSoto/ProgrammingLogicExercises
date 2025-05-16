@@ -36,3 +36,33 @@ else:
 
 4. happy coding!
 '''
+# My Approach
+def third_maximum_number(nums):
+    nums.sort()
+    tries = 1
+    greatest_num = nums[-1]
+    index = len(nums) - 2
+    while index >= 0:
+        if nums[index] < greatest_num:
+            greatest_num = nums[index]
+            tries += 1
+        if tries == 3:
+            break
+        if index == 0:
+            return nums[-1]
+        index -= 1
+    return greatest_num
+
+# Testing
+data_test_0 = [3,2,1]
+data_test_1 = [2,1]
+data_test_2 = [2,2,3,1]
+print(third_maximum_number(data_test_1))
+
+'''Complexity Analysis
+Time Complexity: O(NlogN)
+Space Complexity: O(1)'''
+
+# Testing
+data_test_0 = [1,2,-2147483648]
+print(third_maximum_number(data_test_0))
