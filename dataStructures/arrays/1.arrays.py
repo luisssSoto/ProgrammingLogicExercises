@@ -36,5 +36,9 @@ print(my_array1.get_array())
 '''Delete O(n)'''
 my_array1.delete_element(2)
 print(my_array1.get_array())
+my_array1.insert_element(4, 50)
+print(my_array1.get_array())
+my_array1.delete_element(4)
+print(my_array1.get_array())
 
 
