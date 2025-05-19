@@ -45,3 +45,21 @@ return the count variable
 4. coding
 
 '''
+def height_checker(heights):
+    unorder_heights = heights[:]
+    heights.sort()
+    count_wrong_student_place = 0
+    for i in range(len(heights)):
+        if heights[i] != unorder_heights[i]:
+            count_wrong_student_place += 1
+    return count_wrong_student_place
+
+# Testing 
+data_test_0 = [1,1,4,2,1,3]
+data_test_1 = [5,1,2,3,4]
+data_test_2 = [1,2,3,4,5]
+print(height_checker(data_test_2))
+
+'''Complexity Analysis:
+ * Time Complexity: O(NlogN)
+ * Space Complexity: O(N)'''

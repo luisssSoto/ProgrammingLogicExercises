@@ -44,3 +44,23 @@ var heightChecker = function(heights) {
 
 let heights = [1,1,4,2,1,3];
 console.log(heightChecker(heights));
+
+var heightChecker = function(heights) {
+    let sortedHeights = heights.slice().sort((a, b) => a - b);
+    let countWrongStudentPlaces = 0;
+    for (let i = 0; i < heights.length; i++) {
+        if (heights[i] !== sortedHeights[i]) {
+            countWrongStudentPlaces++;
+        };
+    };
+    return countWrongStudentPlaces;
+};
+
+// Testing 
+let dataTest1 = [5,1,2,3,4];
+console.log(heightChecker(dataTest1));
+
+/**Complexity Analysis:
+ * Time Complexity: O(NlogN)
+ * Space Complexity: O(N)
+ */
