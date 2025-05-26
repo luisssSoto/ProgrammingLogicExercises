@@ -7,5 +7,5 @@
 * A file .txt (exercise's intructions)
 * A file .png (The evidence that the code works and in some cases the Complexity Analysis)
 
-![Python](/../main/python.jpeg)
+![Python](/../main/python.jpg)
 ![JavaScript](/../main/js.png)
