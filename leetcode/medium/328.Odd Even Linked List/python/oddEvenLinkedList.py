@@ -77,3 +77,23 @@ for node in nodes_d:
 linked_list_a.show_nodes()
 print(linked_list_a.odd_even(linked_list_a.head.next))
 linked_list_a.show_nodes()
+
+
+# Approach 2: Simplifier Algorithm
+def odd_even(head):
+    if head is None:
+        return head
+    odd = head
+    even = odd.next
+    even_head = even
+    while even is not None and even.next is not None:
+        odd.next = even.next
+        odd = odd.next
+        even.next = odd.next
+        even = even.next
+    odd.next = even_head
+    return head
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(1)'''
