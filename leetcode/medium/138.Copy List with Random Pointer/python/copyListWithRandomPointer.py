@@ -64,3 +64,32 @@ l1.point_random(2, 4)
 l1.point_random(3, 2)
 l1.point_random(4, 0)
 l1.show_nodes()
+
+def copy_random_list(head):
+    if head is None:
+        return head
+    visited_nodes = {}
+    def get_clone_node(node, created_nodes):
+        if node is not None:
+            if node in created_nodes:
+                return created_nodes[node]
+            else:
+                created_nodes[node] = Node(node.val, None, None)
+                return created_nodes[node]
+        else:
+            return None
+    old_node = head
+    new_node = Node(old_node.val, None, None)
+    visited_nodes[old_node] = new_node
+    while old_node is not None:
+        new_node.random = get_clone_node(old_node.random, visited_nodes)
+        new_node.next = get_clone_node(old_node.next, visited_nodes)
+        new_node = new_node.next
+        old_node = old_node.next
+    return visited_nodes[head]
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(1)'''
+
+print(copy_random_list(l1.head.next))
