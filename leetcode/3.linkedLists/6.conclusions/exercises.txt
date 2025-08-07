@@ -1,1 +1,6 @@
 21. Merge Two Sorted Lists -> Easy
+2. Add Two Numbers -> Medium
+430. Flatten a Multilevel Doubly Linked List -> Medium
+708. Insert Into a Sorted Circular Linked List -> Medium
+138. Copy List With Random Pointer -> Medium
+61. Rotate List -> Medium
