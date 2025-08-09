@@ -1,4 +1,4 @@
-"""Insert a Node at the Tail of a Linked List"""
+"""Insert A Node At Specific Position In A Linked List"""
 
 class SinglyLinkedListNode:
     def __init__(self, data=None, next=None):
@@ -36,16 +36,15 @@ class MyLinkedList:
             current = current.next
         current.next = current.next.next
         self.nodes -= 1
-
-def insertNodeAtTail(head, data):
-    if head is None:
-        return SinglyLinkedListNode(data)
-    pnt = head
-    while pnt.next is not None:
-        pnt = pnt.next
-    pnt.next = SinglyLinkedListNode(data)
-    return head
-
-'''Complexity Analysis: 
-Time Complexity: O(N)
-Space Complexity: O(1)'''
+        
+    
+    
+def insert_node_at_position(llist, data, position):
+    sentinel_node = llist
+    for i in range(position - 1):
+        sentinel_node = sentinel_node.next
+    temp_node = sentinel_node.next
+    new_node = SinglyLinkedListNode(data)
+    sentinel_node.next = new_node
+    new_node.next = temp_node
+    return llist
