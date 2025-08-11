@@ -16,7 +16,7 @@ class MyLinkedList:
         for _ in range(index + 1):
             current = current.next
         return current.data
-    def addAtIndex(self, index, data):
+    def add_at_index(self, index, data):
         if index < 0 or index > self.nodes:
             return - 1
         current = self.head
@@ -24,11 +24,11 @@ class MyLinkedList:
             current = current.next
         current.next = SinglyLinkedListNode(data, current.next)
         self.nodes += 1
-    def addAtHead(self, data):
-        self.addAtIndex(0, data)
-    def addAtTail(self, data):
-        self.addAtIndex(self.nodes, data)
-    def deleteAtIndex(self, index):
+    def add_at_head(self, data):
+        self.add_at_index(0, data)
+    def add_at_tail(self, data):
+        self.add_at_index(self.nodes, data)
+    def delete_at_index(self, index):
         if index < 0 or index >= self.nodes:
             return - 1
         current = self.head
