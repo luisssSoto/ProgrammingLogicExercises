@@ -79,27 +79,45 @@ print(myLinkedList)
 myLinkedList.show_values()
 print()
 
-def swap_nodes_in_pairs(head):
-    dummy = ListNode(-1, None)
-    dummy.next = head
+# def swap_nodes_in_pairs(head):
+#     dummy = ListNode(-1, None)
+#     dummy.next = head
 
-    prev_node = dummy
+#     prev_node = dummy
     
-    while head is not None and head.next is not None:
-        first_node = head
-        second_node = head.next
+#     while head is not None and head.next is not None:
+#         first_node = head
+#         second_node = head.next
 
-        prev_node.next = second_node
-        first_node.next = second_node.next
-        second_node.next = first_node
+#         prev_node.next = second_node
+#         first_node.next = second_node.next
+#         second_node.next = first_node
 
-        prev_node = first_node
-        head = first_node.next
-    return dummy.next
+#         prev_node = first_node
+#         head = first_node.next
+#     return dummy.next
 
-myLinkedList.show_values()
-swap_nodes_in_pairs(myLinkedList.head)
+# myLinkedList.show_values()
+# swap_nodes_in_pairs(myLinkedList.head)
 
 # Complexity Analysis:
 # Time Complexity : O(N) where N is the size of the linked list.
 # Space Complexity : O(1).
+
+def swap_pairs_recursively(head):
+    # If the list has no node or has only one node left.
+        if not head or not head.next:
+            return head
+
+        # Nodes to be swapped
+        first_node = head
+        second_node = head.next
+
+        # Swapping
+        first_node.next = swap_pairs_recursively(second_node.next)
+        second_node.next = first_node
+
+        # Now the head is the second node
+        return second_node
+
+print(swap_pairs_recursively(myLinkedList.head.next))
