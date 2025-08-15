@@ -105,4 +105,14 @@ linked_list_b = LinkedList()
 for i in range(1, 6):
     linked_list_b.add_at_tail(i)
 linked_list_b.show_nodes()
-print(r(linked_list_b.head.next))
+# print(r(linked_list_b.head.next))
+
+def reverse_recursive(head):
+    if (not head) or (not head.next):
+        return head
+    p = reverse_recursive(head.next)
+    head.next.next = head
+    head.next = None
+    return p
+
+print(reverse_recursive(linked_list_b.head.next))
