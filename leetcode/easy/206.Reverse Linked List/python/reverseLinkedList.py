@@ -91,28 +91,9 @@ Space complexity : O(n).
 The extra space comes from implicit stack space due to recursion. 
 The recursion could go up to n levels deep.'''
 
-def r(head):
-    curr = head
-    prev = None
-    while curr is not None:
-        next_temp = curr.next
-        curr.next = prev
-        prev = curr
-        curr = next_temp
-    return prev
-
 linked_list_b = LinkedList()
 for i in range(1, 6):
     linked_list_b.add_at_tail(i)
 linked_list_b.show_nodes()
-# print(r(linked_list_b.head.next))
 
-def reverse_recursive(head):
-    if (not head) or (not head.next):
-        return head
-    p = reverse_recursive(head.next)
-    head.next.next = head
-    head.next = None
-    return p
-
-print(reverse_recursive(linked_list_b.head.next))
+print(reverse_linked_list(linked_list_b.head.next))
