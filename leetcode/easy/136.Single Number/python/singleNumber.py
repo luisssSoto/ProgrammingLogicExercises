@@ -1,4 +1,5 @@
 """Single Number"""
+# Approach 1.
 def single_number(nums):
     if len(nums) == 1:
         return nums[0]
@@ -13,6 +14,27 @@ print(single_number(data1))
 def test_single_number():
     assert single_number(data1) == 1
 
+'''Complexity Analysis:
+Time Complexity: O(N2)
+Space Complexity: O(1)'''
+
+# Approach 2.
+def single_number(nums):
+        if len(nums) == 1:
+            return nums[0]
+        nums.sort()
+        tortoise = 0
+        hare = 1
+        for _ in range(len(nums) // 2):
+            if nums[tortoise] != nums[hare]:
+                return nums[tortoise]
+            tortoise += 2
+            hare += 2
+        return nums[hare - 1]
+
+'''Complexity Analysis:
+Time Complexity: O(N log N)
+Space Complexity: O(1)'''
 
 '''Best solution by anonymous'''
 def singleNumber(nums):
@@ -26,24 +48,3 @@ def singleNumber(nums):
         return ans
 
 print(singleNumber(data1))
-'''
-1.
-input: integer numbers array
-output: integer number that appears only once in the array
-
-2.
-edge cases: length == 1 return the first element
-iterate the array
-if that element in the rest of array continue
-else: return that value
-
-3.
-if length of the array nums == 1:
-    return nums[0]
-else:
-    for i in range(len(nums)-1):
-        if nums[i] not in nums[i + 1:]:
-            return nums[i]
-
-4. I'm going to exceed the time complexity or space complexity maybe
-'''
