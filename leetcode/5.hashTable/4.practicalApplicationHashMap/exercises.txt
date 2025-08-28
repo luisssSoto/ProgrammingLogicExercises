@@ -1,1 +1,2 @@
 1. Two Sum -> Easy
+205. Isomorphic Strings -> Easy

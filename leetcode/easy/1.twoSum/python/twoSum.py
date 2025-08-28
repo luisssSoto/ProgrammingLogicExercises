@@ -12,13 +12,11 @@ def twoSum(nums, target):
                 nums_dict[nums[i]] = indexes
             else:
                 nums_dict[nums[i]] = i
-        print(f"nums dict:{nums_dict}")
         matches = []
         for num in nums:
             matches.append(nums_dict[num])
             difference = target - num
-            if difference in nums_dict and nums_dict[difference] not in matches :
-                print(f"difference dict: {nums_dict[difference]}")
+            if difference in nums_dict and nums_dict[difference] not in matches :    
                 matches.append(nums_dict[difference])
                 return matches
             else:
