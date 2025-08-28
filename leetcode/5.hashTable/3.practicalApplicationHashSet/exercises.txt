@@ -1,1 +1,4 @@
 217. Contains Duplicate -> Easy
+136. Single Number -> Easy
+749. Intersection of Two Arrays -> Easy
+202. Happy Number -> Easy
