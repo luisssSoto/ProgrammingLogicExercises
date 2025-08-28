@@ -1,1 +1,2 @@
 705. Design HashSet -> Easy
+706. Design HashMap -> Easy
