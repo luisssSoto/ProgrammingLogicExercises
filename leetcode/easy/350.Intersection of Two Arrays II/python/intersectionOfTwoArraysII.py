@@ -101,3 +101,24 @@ i.extend([4] * min(2,3))
 print(i)
 i.extend([5] * 5)
 print(i)
+
+# Approach 2: 
+def intersect(nums1, nums2):
+        import collections
+        intersection_values = []
+        nums1_dict = collections.Counter(nums1)
+        nums2_dict = {}
+        for num in nums2:
+            if num not in nums2_dict:
+                nums2_dict[num] = 1
+            else:
+                nums2_dict[num] += 1
+        for key in nums1_dict:
+            if key in nums2_dict:
+                for i in range(min(nums1_dict[key], nums2_dict[key])):
+                    intersection_values.append(key)
+        return intersection_values
+
+'''Complexity Analysis:
+Time Complexity: O(M + N)
+Space Complexity: O(M + N)'''
