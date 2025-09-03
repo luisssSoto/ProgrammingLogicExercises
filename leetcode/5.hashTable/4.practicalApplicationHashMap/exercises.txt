@@ -1,2 +1,7 @@
 1. Two Sum -> Easy
 205. Isomorphic Strings -> Easy
+599. Minimum Index Sum of Two Lists -> Easy
+387. First Unique Character in a String -> Easy
+350. Intersection of Two Arrays II -> Easy
+219. Contains Duplicate II -> Easy
+359. Logger Rate Limiter -> Easy
