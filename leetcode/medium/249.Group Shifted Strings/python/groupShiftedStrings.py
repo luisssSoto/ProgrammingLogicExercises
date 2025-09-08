@@ -1,0 +1,2 @@
+def groupStrings(strings):
+    pass
