@@ -1,0 +1,45 @@
+Check if the array is sorted
+Given an array nums, return true if the array was initially sorted in 
+non-decreasing order and then rotated any number of times (including zero). 
+Otherwise, return false.
+
+Rotation means that some prefix of the array is moved to the end while 
+maintaining the relative order of all elements.
+Duplicates are allowed in the array.
+
+Note:
+If A is the original sorted array and it is rotated by k positions, the 
+resulting array B satisfies:
+B[i] = A[(i+k) % A.length] for every valid index i.
+
+Constraints
+1 <= nums.length <= 100
+1 <= nums[i] <= 100
+
+Sample 1:
+Input
+Output
+7
+6 7 1 2 3 4 5
+true
+Explanation:
+The original sorted array was [1,2,3,4,5,6,7].
+Rotating by k = 2 positions gives [6,7,1,2,3,4,5].
+
+Sample 2:
+Input
+Output
+5
+2 3 4 5 1
+true
+Explanation:
+The original sorted array [1,2,3,4,5] rotated by k = 4 results in [2,3,4,5,1].
+
+Sample 3:
+Input
+Output
+5
+4 5 2 3 1
+false
+Explanation:
+No rotation of a sorted array can produce this order.
