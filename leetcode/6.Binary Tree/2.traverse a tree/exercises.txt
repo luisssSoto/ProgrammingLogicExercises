@@ -1,1 +1,3 @@
 144. Binary Tree Preorder Traversal -> Easy
+94. Binary Tree Inorder Traversal -> Easy
+145. Binary Tree Postorder Traversal -> Easy
