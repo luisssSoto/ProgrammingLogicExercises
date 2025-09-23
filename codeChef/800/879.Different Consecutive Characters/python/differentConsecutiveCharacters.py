@@ -1,0 +1,16 @@
+"""Different Consecutive Characters"""
+
+t = int(input())
+while t > 0:
+    n = int(input())
+    s = input()
+    count = 0
+    for i in range(n - 1):
+        if s[i] == s[i + 1]:
+            count += 1
+    print(count)
+    t -= 1
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(1)'''
