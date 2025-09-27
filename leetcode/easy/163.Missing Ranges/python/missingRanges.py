@@ -1,6 +1,6 @@
 """Missing Ranges"""
 
-def missing_ranges(nums: List[int], lower: int, upper: int) -> List[List[int]]:
+def missing_ranges(nums: list[int], lower: int, upper: int) -> list[list[int]]:
     if len(nums) == 0:
         return [[lower, upper]]
     matrix = []
