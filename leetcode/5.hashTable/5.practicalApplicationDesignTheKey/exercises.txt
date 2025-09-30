@@ -1,2 +1,4 @@
 49. Group Anagrams -> Medium
 249.Group Shifted Strings -> Medium
+36.Valid Sudoku -> Medium
+652. Find Duplicate Subtrees -> Medium(Pending)
