@@ -37,3 +37,23 @@ new_list = []
 new_s.split()
 print("a" not in s0)
 print(length_of_longest_substring(s4))
+
+def length_of_longest_substring(s: str) -> int:
+        queue = []
+        max_length = 0
+        for i in range(len(s)):
+            if s[i] not in queue:
+                queue.append(s[i])
+                if len(queue) > max_length:
+                    max_length = len(queue)
+            else:
+                if len(queue) > max_length:
+                    max_length = len(queue)
+                new_index = queue.index(s[i])
+                queue = queue[new_index + 1:]
+                queue.append(s[i])
+        return max_length
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(N)'''
