@@ -1,0 +1,5 @@
+771. Jewels and Stones -> Easy
+3. Longest Substring Without Repeating Characters -> Medium
+170. Two Sum III - Data Structure Design -> Easy
+347. Top K Frequent Elements -> Medium
+380. Insert Delete GetRandom O(1) -> Medium
