@@ -6,7 +6,7 @@ class MyCircularQueue:
         self.queue = [None for _ in range(self.size)]
         self.head = self.tail = 0
 
-    def enQueue(self, value: int) -> bool:
+    def enqueue(self, value: int) -> bool:
         if self.isFull() is True:
             return False
         self.queue[self.tail] = value
@@ -15,8 +15,8 @@ class MyCircularQueue:
             self.tail = 0
         return True
 
-    def deQueue(self) -> bool:
-        if self.isEmpty() is True:
+    def dequeue(self) -> bool:
+        if self.is_empty() is True:
             return False
         self.queue[self.head] = None
         self.head += 1
@@ -24,22 +24,26 @@ class MyCircularQueue:
             self.head = 0
         return True
 
-    def Front(self) -> int:
-        if self.isEmpty() is True:
+    def get_front(self) -> int:
+        if self.is_empty() is True:
             return -1
         return self.queue[self.head]
 
-    def Rear(self) -> int:
-        if self.isEmpty() is True:
+    def get_rear(self) -> int:
+        if self.is_empty() is True:
             return -1
         return self.queue[self.tail - 1]
 
-    def isEmpty(self) -> bool:
+    def is_empty(self) -> bool:
         if self.head == self.tail and self.queue[self.head] is None:
             return True
         return False
 
-    def isFull(self) -> bool:
+    def is_full(self) -> bool:
         if self.head == self.tail and self.queue[self.tail] is not None:
             return True
         return False
+    
+'''Complexity Analysis:
+Time Complexity: O(1)
+Space Complexity: O(N)'''
