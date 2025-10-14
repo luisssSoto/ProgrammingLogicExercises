@@ -1,9 +1,0 @@
-In this chapter, we will first introduce First-in-first-out (FIFO) 
-and how it works in a queue.
-
-The goal of this chapter is to help you:
-
-Understand the definition of FIFO and queue;
-Be able to implement a queue by yourself;
-Be familiar with the built-in queue structure;
-Use queue to solve simple problems.
