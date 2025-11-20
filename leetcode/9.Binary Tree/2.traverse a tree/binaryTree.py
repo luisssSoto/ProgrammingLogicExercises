@@ -42,6 +42,26 @@ class BinaryTree:
             tree_nodes_val.append(current_node.val)
             current_node = current_node.right
         return tree_nodes_val
+    def post_order_traversal(self):
+        tree_nodes_val = []
+        if self.root is None:
+            return tree_nodes_val
+        previous_node = None
+        traversal_stack = []
+        while self.root is not None or len(traversal_stack) > 0:
+            if self.root is not None:
+                traversal_stack.append(self.root)
+                self.root = self.root.left
+            else:
+                self.root = traversal_stack[-1]
+                if self.root.right is None or self.root.right == previous_node:
+                    tree_nodes_val.append(self.root.val)
+                    traversal_stack.pop()
+                    previous_node = self.root
+                    self.root = None
+                else:
+                    self.root = self.root.right
+        return tree_nodes_val
 
 
 node_f = TreeNode("F")
@@ -68,5 +88,6 @@ binary_tree = BinaryTree(node_f)
 print(binary_tree)
 print(binary_tree.pre_order_traversal())
 print(binary_tree.inorder_traversal())
+print(binary_tree.post_order_traversal())
 
         
