@@ -10,7 +10,7 @@ class BinaryTree:
     def __init__(self, root):
         self.nodes = 0
         self.root = root
-    def pre_order_traversal(self):
+    def pre_order_traversal_recursive(self):
         '''Complexity Analysis:
         Time Complexity: O(N)
         Space Complexity: O(N)'''
@@ -24,22 +24,22 @@ class BinaryTree:
         tree_nodes_val = []
         recursive(current_node, tree_nodes_val)
         return tree_nodes_val
-    def inorder_traversal(self):
+    def inorder_traversal_recursive(self):
         '''Complexity Analysis:
         Time Complexity: O(N)
         Space Complexity: O(N)'''
+        def recursive(root, ans):
+            if not root:
+                return
+            recursive(root.left, ans)
+            ans.append(root.val)
+            recursive(root.right, ans)
         tree_nodes_val = []
-        stack = []
         current_node = self.root
-        while current_node or stack:
-            while current_node:
-                stack.append(current_node)
-                current_node = current_node.left
-            current_node = stack.pop()
-            tree_nodes_val.append(current_node.val)
-            current_node = current_node.right
+        recursive(current_node, tree_nodes_val)
         return tree_nodes_val
-    def post_order_traversal(self):
+    
+    def post_order_traversal_recursive(self):
         tree_nodes_val = []
         if self.root is None:
             return tree_nodes_val
@@ -83,6 +83,6 @@ node_i.left = node_h
 binary_tree = BinaryTree(node_f)
 
 print(binary_tree)
-print(binary_tree.pre_order_traversal())
-print(binary_tree.inorder_traversal())
-print(binary_tree.post_order_traversal())
+print(binary_tree.pre_order_traversal_recursive())
+print(binary_tree.inorder_traversal_recursive())
+print(binary_tree.post_order_traversal_recursive())
