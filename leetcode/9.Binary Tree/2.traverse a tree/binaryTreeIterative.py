@@ -43,25 +43,28 @@ class BinaryTree:
             current_node = current_node.right
         return tree_nodes_val
     def post_order_traversal_iterative(self):
-        tree_nodes_val = []
-        if self.root is None:
-            return tree_nodes_val
+        '''Complexity Analysis:
+        Time Complexity: O(N)
+        Space Complexity: O(N)'''
+        tree_nodes_vals = []
+        if not self.root:
+            return tree_nodes_vals
+        current_node = self.root
         previous_node = None
-        traversal_stack = []
-        while self.root is not None or len(traversal_stack) > 0:
-            if self.root is not None:
-                traversal_stack.append(self.root)
-                self.root = self.root.left
+        stack = []
+        while current_node or stack:
+            if current_node:
+                stack.append(current_node)
+                current_node = current_node.left
             else:
-                self.root = traversal_stack[-1]
-                if self.root.right is None or self.root.right == previous_node:
-                    tree_nodes_val.append(self.root.val)
-                    traversal_stack.pop()
-                    previous_node = self.root
-                    self.root = None
+                current_node = stack[-1]
+                if not current_node.right or current_node.right == previous_node:
+                    tree_nodes_vals.append(current_node.val)
+                    previous_node = stack.pop()
+                    current_node = None
                 else:
-                    self.root = self.root.right
-        return tree_nodes_val
+                    current_node = current_node.right
+        return tree_nodes_vals
 
 
 node_f = TreeNode("F")
