@@ -10,6 +10,7 @@ class BinaryTree:
     def __init__(self, root):
         self.nodes = 0
         self.root = root
+
     def pre_order_traversal_recursive(self):
         '''Complexity Analysis:
         Time Complexity: O(N)
@@ -24,6 +25,7 @@ class BinaryTree:
         tree_nodes_val = []
         recursive(current_node, tree_nodes_val)
         return tree_nodes_val
+    
     def inorder_traversal_recursive(self):
         '''Complexity Analysis:
         Time Complexity: O(N)
@@ -40,26 +42,29 @@ class BinaryTree:
         return tree_nodes_val
     
     def post_order_traversal_recursive(self):
-        tree_nodes_val = []
-        if self.root is None:
-            return tree_nodes_val
-        previous_node = None
-        traversal_stack = []
-        while self.root is not None or len(traversal_stack) > 0:
-            if self.root is not None:
-                traversal_stack.append(self.root)
-                self.root = self.root.left
+        def recursive(stack, result, previous_node, root):
+            if not root and not stack:
+                return
+            elif root:
+                stack.append(root)
+                root = root.left
+                recursive(stack, result, previous_node, root)
             else:
-                self.root = traversal_stack[-1]
-                if self.root.right is None or self.root.right == previous_node:
-                    tree_nodes_val.append(self.root.val)
-                    traversal_stack.pop()
-                    previous_node = self.root
-                    self.root = None
+                root = stack[-1]
+                if not root.right or root.right == previous_node:
+                    result.append(root.val)
+                    previous_node = stack.pop()
+                    root = None
+                    recursive(stack, result, previous_node, root)
                 else:
-                    self.root = self.root.right
-        return tree_nodes_val
-
+                    root = root.right
+                    recursive(stack, result, previous_node, root)
+        s = []
+        r = []
+        pn = None
+        cn = self.root
+        recursive(s, r, pn, cn)
+        return r
 
 node_f = TreeNode("F")
 node_b = TreeNode("B")
