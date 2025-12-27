@@ -7,7 +7,6 @@ class TreeNode:
     def __str__(self):
         return str(self.info)
 
-
 class BinaryTree:
     def __init__(self, root=None):
         self.root = root
@@ -35,7 +34,7 @@ class BinaryTree:
     
     def pre_order_traversal_iterative(self):
         if not self.root:
-            return None
+            return []
         stack = []
         nodes_values = []
         current_node = self.root
@@ -87,6 +86,37 @@ class BinaryTree:
         nodes_values = []
         recursive(nodes_values, self.root)
         return nodes_values
+
+    def post_order_traversal_iterative(self):
+        if not self.root:
+            return []
+        stack = []
+        nodes_values = []
+        previous_node = None
+        current_node = self.root
+        while stack or current_node:
+            while current_node:
+                stack.append(current_node)
+                current_node = current_node.left
+            current_node = stack[-1]
+            if not current_node.right or current_node.right == previous_node:
+                previous_node = stack.pop()
+                nodes_values.append(previous_node.info)
+                current_node = None
+            else:
+                current_node = current_node.right
+        return nodes_values
+    
+    def post_order_traversal_recursive(self):
+        def recursive(res, root):
+            if not root:
+                return
+            recursive(res, root.left)
+            recursive(res, root.right)
+            res.append(root.info)
+        node_values = []
+        recursive(node_values, self.root)
+        return node_values
         
 # testcases
 node_f = TreeNode("F")
@@ -113,6 +143,8 @@ print(binary_tree.pre_order_traversal_iterative())
 print(binary_tree.pre_order_traversal_recurive())
 print(binary_tree.inorder_traversal_iterative())
 print(binary_tree.inorder_traversal_recursive())
+print(binary_tree.post_order_traversal_iterative())
+print(binary_tree.post_order_traversal_recursive())
 
 binary_tree1 = BinaryTree(TreeNode(1))
 for i in range(2, 10):
