@@ -7,7 +7,7 @@ def circularArrayRotation(a: int, k: int, queries: list) -> list:
     ans = []
     for query in queries:
         print((query - k) % len(a))
-        ans.append(a[(query - k) % len(a)])
+        ans.append(a[(query - k + len(a)) % len(a)])
     return ans
 
 a = [x for x in range(1, 6)]
@@ -68,7 +68,6 @@ def circularArrayRotation(a: int, k: int, queries: list) -> list:
         for j in range(len(a) - 1, 0, -1):
             a[j] = a[j - 1]
         a[0] = last_element
-    print(f"modified array: {a}")
     for query in queries:
         ans.append(a[query])
     return ans
