@@ -1,6 +1,6 @@
 """Jumping On The Cloud: Revisited"""
 
-def jumpingOnClouds(c: list[int], k:int) -> int:
+def jumping_on_clouds(c: list[int], k:int) -> int:
     count = 0
     index = k % len(c)
     def cumulus_or_thunderheads(cloud):
