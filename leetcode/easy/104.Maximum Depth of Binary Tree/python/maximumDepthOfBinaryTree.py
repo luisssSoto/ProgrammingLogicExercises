@@ -24,6 +24,19 @@ def max_depth(root: TreeNode) -> int:
             stack.append((root.right, depth + 1))
     return max_depth
 
+def max_depth(root: TreeNode) -> int:
+    def recursive(r, max_depth, depth):
+        if not r:
+            return max_depth
+        max_depth = max(max_depth, depth)
+        if r.left:
+            max_depth = recursive(r.left, max_depth, depth + 1)
+        if r.right:
+            max_depth = recursive(r.right, max_depth, depth + 1)
+        return max_depth
+    maximum_depth = 0
+    return recursive(root, maximum_depth, 1)
+
 '''Complexity Analysis:
 Time Complexity: O(N)
 Space Complexity: O(N)'''
@@ -54,5 +67,6 @@ node8.left = node9
 binaryTree = BinaryTree(node1)
 
 print(max_depth(binaryTree.root))
+
 
 
