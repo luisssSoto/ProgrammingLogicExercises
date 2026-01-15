@@ -11,6 +11,7 @@ class BinaryTree:
         self.root = root
 
 def max_depth(root: TreeNode) -> int:
+    '''Top-Down Iteratively'''
     if not root:
         return 0
     stack = [(root, 1)]
@@ -25,6 +26,7 @@ def max_depth(root: TreeNode) -> int:
     return max_depth
 
 def max_depth(root: TreeNode) -> int:
+    '''Top-Down recursively'''
     def recursive(r, max_depth, depth):
         if not r:
             return max_depth
@@ -36,6 +38,53 @@ def max_depth(root: TreeNode) -> int:
         return max_depth
     maximum_depth = 0
     return recursive(root, maximum_depth, 1)
+
+def max_depth(root: TreeNode) -> int:
+    if not root:
+        return 0
+    stack = []
+    depth = 0
+    max_depth = 0
+    while stack or root:
+        while root:
+            depth += 1
+            stack.append((root, depth))
+            root = root.left
+        root, depth = stack.pop()
+        if not root.left and not root.right:
+            max_depth = max(max_depth, depth)
+        if root.right:
+            root = root.right
+        else:
+            root = None
+    return max_depth
+
+def max_depth(root: TreeNode) -> int:
+    if not root:
+        return 0
+
+    stack = [(root, False)]  # (node, visited)
+    depth = {}
+
+    while stack:
+        node, visited = stack.pop()
+
+        if not node:
+            continue
+
+        if visited:
+            # children already processed → compute depth
+            left_depth = depth.get(node.left, 0)
+            right_depth = depth.get(node.right, 0)
+            depth[node] = 1 + max(left_depth, right_depth)
+        else:
+            # post-order: left → right → node
+            stack.append((node, True))
+            stack.append((node.right, False))
+            stack.append((node.left, False))
+
+    return depth[root]
+
 
 '''Complexity Analysis:
 Time Complexity: O(N)
