@@ -40,38 +40,15 @@ def max_depth(root: TreeNode) -> int:
     return recursive(root, maximum_depth, 1)
 
 def max_depth(root: TreeNode) -> int:
+    '''Top Down Iteratevely'''
     if not root:
         return 0
-    stack = []
-    depth = 0
-    max_depth = 0
-    while stack or root:
-        while root:
-            depth += 1
-            stack.append((root, depth))
-            root = root.left
-        root, depth = stack.pop()
-        if not root.left and not root.right:
-            max_depth = max(max_depth, depth)
-        if root.right:
-            root = root.right
-        else:
-            root = None
-    return max_depth
-
-def max_depth(root: TreeNode) -> int:
-    if not root:
-        return 0
-
     stack = [(root, False)]  # (node, visited)
     depth = {}
-
     while stack:
         node, visited = stack.pop()
-
         if not node:
             continue
-
         if visited:
             # children already processed → compute depth
             left_depth = depth.get(node.left, 0)
@@ -82,8 +59,17 @@ def max_depth(root: TreeNode) -> int:
             stack.append((node, True))
             stack.append((node.right, False))
             stack.append((node.left, False))
-
     return depth[root]
+
+def max_depth(root: TreeNode) -> int:
+    def recursive(r):
+        if not r:
+            return 0
+        left_depth = recursive(r.left)
+        right_depth = recursive(r.right)
+        return max(left_depth, right_depth) + 1
+    return recursive(root)
+
 
 
 '''Complexity Analysis:
