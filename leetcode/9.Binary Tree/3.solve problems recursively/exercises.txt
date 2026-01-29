@@ -1,2 +1,4 @@
 104. Maximum Depth of Binary Tree -> Easy
 101. Symmetric Tree -> Easy
+112. Path Sum -> Easy
+250. Count Univalue Subtrees -> Medium
