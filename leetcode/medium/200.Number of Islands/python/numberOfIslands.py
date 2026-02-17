@@ -1,5 +1,6 @@
 """200.Number of Islands"""
 def num_islands(grid: list[list[str]]) -> int:
+    """BFS Approach"""
     if not grid:
         return 0
     num_rows = len(grid)
@@ -26,6 +27,39 @@ def num_islands(grid: list[list[str]]) -> int:
                     if c + 1 < num_cols and grid[r][c + 1] == "1":
                         neighboors.append((r, c + 1))
                         grid[r][c + 1] = "0"
+    return islands
+
+def number_islands(grid: list[list[str]]) -> int:
+    """BFS Approach"""
+    lands_stack = []
+    visited_islands = set()
+    islands = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if grid[i][j] == "0":
+                continue
+            if grid[i][j] == "1" and (i, j) not in visited_islands:
+                visited_islands.add((i, j))
+                lands_stack.append((i, j))
+                while lands_stack:
+                    curr = lands_stack.pop()
+                    if curr[1] < len(grid[i]) - 1:
+                        if grid[curr[0]][curr[1] + 1] == "1" and (curr[0], curr[1] + 1) not in visited_islands:
+                            visited_islands.add((curr[0], curr[1] + 1))
+                            lands_stack.append((curr[0], curr[1] + 1))
+                    if curr[0] < len(grid) - 1:
+                        if grid[curr[0] + 1][curr[1]] == "1" and (curr[0] + 1, curr[1]) not in visited_islands:
+                            visited_islands.add((curr[0] + 1, curr[1]))
+                            lands_stack.append((curr[0] + 1, curr[1]))
+                    if curr[1] > 0:
+                        if grid[curr[0]][curr[1] - 1] == "1" and (curr[0], curr[1] - 1) not in visited_islands:
+                            visited_islands.add((curr[0], curr[1] - 1))
+                            lands_stack.append((curr[0], curr[1] - 1))
+                    if curr[0] > 0:
+                        if grid[curr[0] - 1][curr[1]] == "1" and (curr[0] - 1, curr[1]) not in visited_islands:
+                            visited_islands.add((curr[0] - 1, curr[1]))
+                            lands_stack.append((curr[0] - 1, curr[1]))
+                islands += 1
     return islands
                         
 """Testcase"""
