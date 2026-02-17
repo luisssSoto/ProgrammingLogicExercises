@@ -1,1 +1,4 @@
 286. Walls and Gates -> Medium
+200. Number of Islands -> Medium
+752. Open the Lock -> Medium
+279. Perfect Squares -> Medium

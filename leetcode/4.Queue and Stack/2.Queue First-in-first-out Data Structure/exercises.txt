@@ -1,1 +1,2 @@
 346. Moving Average from Data Stream -> Easy
+622. Design Circular Queue
