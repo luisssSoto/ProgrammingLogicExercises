@@ -1,6 +1,7 @@
 """200.Number of Islands"""
 def num_islands(grid: list[list[str]]) -> int:
-    """BFS Approach"""
+    """BFS Approach
+    Space complexity: O(min(M,N))"""
     if not grid:
         return 0
     num_rows = len(grid)
@@ -31,6 +32,8 @@ def num_islands(grid: list[list[str]]) -> int:
 
 def number_islands(grid: list[list[str]]) -> int:
     """BFS Approach"""
+    if not grid:
+        return 0
     lands_stack = []
     visited_islands = set()
     islands = 0
@@ -61,14 +64,42 @@ def number_islands(grid: list[list[str]]) -> int:
                             lands_stack.append((curr[0] - 1, curr[1]))
                 islands += 1
     return islands
+
+def number_islands(grid: list[list[str]]) -> int:
+    """DFS Approach"""
+    def dfs(grid, r, c):
+        if (
+            r < 0
+            or c < 0
+            or r >= len(grid)
+            or c >= len(grid[0])
+            or grid[r][c] != "1"
+        ):
+            return
+        grid[r][c] = "0"
+
+        dfs(grid, r - 1, c)
+        dfs(grid, r + 1, c)
+        dfs(grid, r, c - 1)
+        dfs(grid, r, c + 1)
+
+    if not grid:
+            return 0
+    num_islands = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == "1":
+                dfs(grid, i, j)
+                num_islands += 1
+    return num_islands
                         
 """Testcase"""
 t1 = [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
-print(num_islands(t1))
+print(number_islands(t1))
 
 '''Complexity Analysis:
 Time complexity: O(M * N) where M is the number of rows and
 N is the number of columns.
 
-Space complexity: O(min(M,N)) because in worst case where the
+Space complexity: O(M * N) because in worst case where the
 grid is filled with lands, the size of queue can grow up to min(M,N).'''
