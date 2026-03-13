@@ -1,46 +1,47 @@
 class Node:
-    def __init__(self, val):
+    def __init__(self, val, neighbors = None):
         self.val = val
-        self.left = None
-        self.right = None
+        self.neighbors = neighbors if neighbors is not None else []
 
-class BinaryTree:
-    def __init__(self, root):
-        self.root = root
-
-def dfs(node, target):
-    visited = set()
-    visited.add(node)
+def iterative_dfs(node, target):
+    """DFS Iterative"""
     stack = [node]
+    visited = {node}
     while stack:
-        curr = stack[-1]
-        if curr.val == target:
-            return [curr, curr.val, curr.left, curr.right]
-        if curr.left and curr.left not in visited:
-            stack.append(curr.left)
-            visited.add(curr.left)
-            continue
-        if curr.right and curr.right not in visited:
-            stack.append(curr.right)
-            visited.add(curr.right)
-            continue
-        stack.pop()
+        node = stack.pop()
+        if node.val == target:
+            return node
+        for neighbor in node.neighbors:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                stack.append(neighbor)
     return -1
 
+def recursive_dfs(node, target, visited):
+    """DFS recursive"""
+    if node.val == target:
+        return True
+    for neighbor in node.neighbors:
+        if neighbor not in visited:
+            visited.add(neighbor)
+            if recursive_dfs(neighbor, target, visited) == True:
+                return True
+    return False    
+
 # testcase
-node1 = Node(1)
-node2 = Node(2)
-node3 = Node(3)
-node4 = Node(4)
-node5 = Node(5)
-node6 = Node(6)
+node_a = Node('A')
+node_b = Node('B')
+node_c = Node('C')
+node_d = Node('D')
+node_e = Node('E')
+node_f = Node('F')
+node_g = Node('G')
 
-node1.left = node2
-node1.right = node3
-node2.left = node4
-node2.right = node5
-node3.left = node6
+node_a.neighbors = [node_b, node_c, node_d]
+node_b.neighbors = [node_e]
+node_c.neighbors = [node_e, node_f]
+node_d.neighbors = [node_g]
+node_f.neighbors = [node_g]
 
-binary_tree = BinaryTree(node1)
-
-print(dfs(binary_tree.root, 6))
+print(iterative_dfs(node_a, 'G'))
+print(recursive_dfs(node_a, 'G', set()))
