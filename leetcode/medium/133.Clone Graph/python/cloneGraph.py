@@ -34,35 +34,20 @@ def cloneGraph(node: Optional['Node']) -> Optional['Node']:
         return clone_graph[0]
 
 def clone_graph(node: Optional[Node]) -> Optional[Node]:
-    """DFS in process"""
+    """DFS Approach"""
     if not node:
         return node
-    elif not node.neighbors:
-        return [node.val, Node(node.val)]
     stack = [node]
-    visited = {node.val: Node(node.val)}
-    clone_graph = []
+    copy_node = Node(node.val)
+    visited = {node: copy_node}
     while stack:
-        curr = stack.pop()
-        parent_nd = visited[curr.val]
-        left = curr.neighbors[0]
-        if left.val not in visited:
-            stack.append(left)
-            copy_node = Node(left.val)
-            visited[copy_node.val] = copy_node
-        else:
-            copy_node = visited[left.val]
-        parent_nd.neighbors.append(copy_node)
-        right = curr.neighbors[1]
-        if right.val not in visited:
-            stack.append(right)
-            copy_node = Node(right.val)
-            visited[copy_node.val] = copy_node
-        else:
-            copy_node = visited[right.val]
-        parent_nd.neighbors.append(copy_node)
-        clone_graph.append(parent_nd)
-    return clone_graph[0]
+        nd = stack.pop()
+        for neighbor in nd.neighbors:
+            if neighbor not in visited:
+                stack.append(neighbor)
+                visited[neighbor] = Node(neighbor.val)
+            visited[nd].neighbors.append(visited[neighbor])
+    return copy_node
 
 def clone_graph(node: Optional[Node]) -> Optional[Node]:
     """BFS Approach"""
@@ -79,8 +64,6 @@ def clone_graph(node: Optional[Node]) -> Optional[Node]:
                 queue.append(neighbor)
             visited[curr].neighbors.append(visited[neighbor])
     return visited[node]
-
-    
         
 # testcase
 node1 = Node(1)

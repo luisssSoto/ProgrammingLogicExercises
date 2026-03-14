@@ -28,6 +28,27 @@ def recursive_dfs(node, target, visited):
                 return True
     return False    
 
+
+# Modifying the functions to get the shortest distance to target
+def shortest_path_ite_dfs(node, target):
+    """iterative DFS"""
+    stack = [(node, 0)]
+    best = {node: 0}
+    shortest = float('inf')
+    while stack:
+        nd, dis = stack.pop()
+        if dis >= shortest:
+            continue
+        if nd.val == target:
+            shortest = min(shortest, dis)
+            continue
+        for neighbor in nd.neighbors:
+            new_dis = dis + 1
+            if neighbor not in best or new_dis < best[neighbor]:
+                best[neighbor] = new_dis
+                stack.append((neighbor, new_dis))
+    return shortest if shortest != float('inf') else - 1
+
 # testcase
 node_a = Node('A')
 node_b = Node('B')
@@ -45,3 +66,4 @@ node_f.neighbors = [node_g]
 
 print(iterative_dfs(node_a, 'G'))
 print(recursive_dfs(node_a, 'G', set()))
+print(shortest_path_ite_dfs(node_a, 'G'))
