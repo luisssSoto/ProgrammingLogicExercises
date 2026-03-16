@@ -49,21 +49,35 @@ def clone_graph(node: Optional[Node]) -> Optional[Node]:
             visited[nd].neighbors.append(visited[neighbor])
     return copy_node
 
+visited = {}
 def clone_graph(node: Optional[Node]) -> Optional[Node]:
-    """BFS Approach"""
-    from collections import deque
+    """Recursive DFS Approach"""
     if not node:
         return node
-    queue = deque([node])
-    visited = {node: Node(node.val)}
-    while queue:
-        curr = queue.popleft()
-        for neighbor in curr.neighbors:
-            if neighbor not in visited:
-                visited[neighbor] = Node(neighbor.val)
-                queue.append(neighbor)
-            visited[curr].neighbors.append(visited[neighbor])
-    return visited[node]
+    if node in visited:
+        return visited[node]
+    clone_node = Node(node.val, [])
+    visited[node] = clone_node
+    if node.neighbors:
+        clone_node.neighbors = [clone_graph(n) for n in node.neighbors]
+    return clone_node
+            
+
+# def clone_graph(node: Optional[Node]) -> Optional[Node]:
+#     """BFS Approach"""
+#     from collections import deque
+#     if not node:
+#         return node
+#     queue = deque([node])
+#     visited = {node: Node(node.val)}
+#     while queue:
+#         curr = queue.popleft()
+#         for neighbor in curr.neighbors:
+#             if neighbor not in visited:
+#                 visited[neighbor] = Node(neighbor.val)
+#                 queue.append(neighbor)
+#             visited[curr].neighbors.append(visited[neighbor])
+#     return visited[node]
         
 # testcase
 node1 = Node(1)
