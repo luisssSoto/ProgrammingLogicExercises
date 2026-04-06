@@ -14,6 +14,7 @@ class BinaryTree:
         '''Complexity Analysis:
         Time Complexity: O(N)
         Space Complexity: O(N)'''
+        # root -> left -> right
         if not self.root:
             return 
         stack = [self.root]
@@ -31,6 +32,7 @@ class BinaryTree:
         '''Complexity Analysis:
         Time Complexity: O(N)
         Space Complexity: O(N)'''
+        # left -> root -> right
         tree_nodes_val = []
         stack = []
         current_node = self.root
@@ -46,6 +48,7 @@ class BinaryTree:
         '''Complexity Analysis:
         Time Complexity: O(N)
         Space Complexity: O(N)'''
+        # left -> right -> root
         tree_nodes_vals = []
         if not self.root:
             return tree_nodes_vals
