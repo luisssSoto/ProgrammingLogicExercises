@@ -4,3 +4,10 @@ print(s)
 s = s.rstrip(',')
 sp = s.split(",")
 print(sp)
+
+from collections import deque
+
+d = deque(sp)
+print(d)
+d.popleft()
+print(d)
