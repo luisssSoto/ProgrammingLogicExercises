@@ -1,6 +1,6 @@
 """Super Reduced String"""
 
-def super_reduced_string(s: str) -> str
+def super_reduced_string(s: str) -> str:
     stack = []
     for letter in s:
         stack.append(letter)
