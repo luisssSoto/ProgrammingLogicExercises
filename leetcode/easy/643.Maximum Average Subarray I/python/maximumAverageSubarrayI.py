@@ -11,6 +11,26 @@ def find_max_average(nums: list[int], k: int) -> float:
         greatest_sum = max(greatest_sum, current_sum)
     return greatest_sum / k
 
+def find_max_average(nums: list[int], k: int) -> float:
+    left = 0
+    right = k
+    greatest_sum = sum(nums[left: right])
+    curr_sum = greatest_sum
+    while right < len(nums):
+        curr_sum -= nums[left]
+        curr_sum += nums[right]
+        if curr_sum > greatest_sum:
+            greatest_sum = curr_sum
+        left += 1
+        right += 1
+    return greatest_sum / k
+
+
+# testcases:
+nums1 = [1,12,-5,-6,50,3]
+k1 = 4
+print(find_max_average(nums1, k1))
+
 '''Complexity Analysis:
 Time Complexity: O(N)
 Space Complexity: O(1)'''
