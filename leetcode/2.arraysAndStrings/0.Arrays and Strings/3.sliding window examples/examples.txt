@@ -2,3 +2,4 @@
 2.largestSubString
 3.Number of Subarrays -> Medium -> 713
 4.Fix window
+5. Maximum Average Subarray I -> Easy -> 643

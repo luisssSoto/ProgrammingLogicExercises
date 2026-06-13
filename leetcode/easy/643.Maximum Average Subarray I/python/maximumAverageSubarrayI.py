@@ -34,3 +34,23 @@ print(find_max_average(nums1, k1))
 '''Complexity Analysis:
 Time Complexity: O(N)
 Space Complexity: O(1)'''
+
+def find_max_average(nums: list[int], k: int) -> int:
+    ans = 0
+    for i in range(k):
+        ans += nums[i]
+    curr = ans
+    for i in range(len(nums)):
+        curr += nums[i] - nums[i - k]
+        ans = max(ans, curr)
+    print(ans)
+    return ans/k
+
+# Testcase
+nums = [1,12,-5,-6,50,3]
+k = 4
+print(find_max_average(nums, k))
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(1)'''
