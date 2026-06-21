@@ -15,19 +15,12 @@ test2 = [2,3,4,5]
 print(runningSumOf1DArray(test1))
 
 '''Best approaches'''
-'''1.'''
-def runningSumOf1DArray(nums):
-    new_nums = nums[:1]
+def running_sum(nums: list[int]) -> list[int]:
+    prefix_sum = [nums[0]]
     for i in range(1, len(nums)):
-        new_nums.append(nums[i] + new_nums[i - 1])
-    return new_nums
+        prefix_sum.append(prefix_sum[-1] + nums[i])
+    return prefix_sum
 
-print(runningSumOf1DArray(test1))
-
-'''2.'''
-def runningSumOf1DArray(nums):
-    for i in range(1, len(nums)):
-        nums[i] += nums[i - 1]
-    return nums
-
-print(runningSumOf1DArray(test1))
+'''Complexity Analysis: 
+Time Complexity: O(N)
+Space Complexity: O(1)'''
