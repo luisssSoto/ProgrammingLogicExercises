@@ -66,3 +66,42 @@ to build it).
 But in Python we can't assign values to the string because they are
 immutable, so that we decided to create another array, so we have 
 this O(N) Space Complexity'''
+
+def reverse_words(s: str) -> str:
+    stack = []
+    ans = ""
+    word = ""
+    for i in range(len(s)-1, -1, -1):
+        if s[i] != " ":
+            word += s[i]
+        if s[i] == " " or i == 0:
+            stack.append(word)
+            word = ""
+    print(stack)
+    for i in range(len(stack)-1, -1, -1):
+        ans += stack[i] + " "
+    print(len(ans))
+    return ans[:-1]
+
+# Testcases
+s1 = "Let's take LeetCode contest"
+print(reverse_words(s1))
+
+def reverse_words(s: str) -> str:
+    array_s = [letter for letter in s]
+    array_s.append(" ")
+    left = 0
+    for i in range(len(array_s)):
+        right = i
+        if array_s[right] == " ":
+            while left < right - 1:
+                array_s[left], array_s[right-1] = array_s[right-1], array_s[left]
+                left += 1
+                right -= 1
+            left = i + 1
+    array_s = array_s[:-1]
+    return "".join(array_s)
+
+# Testcases
+s1 = "Let's take LeetCode contest"
+print(reverse_words(s1))
