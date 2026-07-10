@@ -46,3 +46,22 @@ Space complexity: O(1).
 We are not using any extra space other than a few integer 
 variables:left_pointer, right_pointer, sum_of_current_window, 
 and result, which takes up constant space each.'''
+
+def minimum_subarray(nums: list[int], target: int) -> int:
+    left = curr = 0
+    min_len = float('inf')
+    for right in range(len(nums)):
+        curr += nums[right]
+        while curr >= target:
+            min_len = min(right - left + 1, min_len)
+            curr -= nums[left]
+            left += 1
+    return min_len if min_len != float('inf') else 0
+
+nums1 = [5,1,3,5,10,7,4,9,2,8]
+target1 = 15
+print(minimum_subarray(nums1, target1))
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(1)'''
