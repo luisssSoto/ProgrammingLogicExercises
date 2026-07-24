@@ -50,3 +50,17 @@ print(find_pivot_index(data_test_0))
 '''Complexity Analysis:
 Time Complexity: O(N), where N is the length of nums.
 Space Complexity: O(1), the space used by left_sum and total_sum.'''
+
+def find_pivot_index(nums: list[int]) -> int:
+    left_sum = 0
+    right_sum = sum(nums)
+    for i, num in enumerate(nums):
+        right_sum -= num
+        if left_sum == right_sum:
+            return i
+        left_sum += num
+    return -1
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(1)'''
