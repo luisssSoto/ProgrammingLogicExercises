@@ -1,6 +1,3 @@
-#  class Solution:
-#     def twoSum(self, nums: List[int], target: int) -> List[int]:
-
 # Approach 1: Hash Table Map two pass
 def twoSum(nums, target):
         nums_dict = {}
@@ -36,6 +33,31 @@ def twoSum(nums, target):
                 return [i, hashmap[complement]]
             hashmap[nums[i]] = i
         return []
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(N)'''
+
+# Brute Force:
+def two_sum(nums: list[int], target: int) -> list[int]:
+     for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
+
+'''Complexity Analysis:
+Time Complexity: O(N2)
+Space Complexity: O(1)'''
+                
+# Hash Table: one pass
+def two_sum(nums: list[int], target: int) -> list[int]:
+    hash_map = {}
+    for i, val in enumerate(nums):
+        missing_val = target - val
+        if missing_val in hash_map:
+            return [hash_map[missing_val], i]
+        elif nums[i] not in hash_map:
+            hash_map[val] = i
 
 '''Complexity Analysis:
 Time Complexity: O(N)
