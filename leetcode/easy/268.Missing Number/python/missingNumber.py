@@ -29,3 +29,11 @@ def missing_number(nums: list[int]) -> int:
 '''Complexity Analysis:
 Time Complexity: O(N)
 Space Complexity: O(1)'''
+
+def missing_number(nums: list[int]) -> int:
+    complete_sequence = sum([x for x in range(0, len(nums) + 1)])
+    return complete_sequence - sum(nums)
+
+'''Complete Analysis:
+Time Complexity: O(N)
+Space Complexity: O(N)'''
