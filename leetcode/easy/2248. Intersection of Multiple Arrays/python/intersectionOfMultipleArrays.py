@@ -11,13 +11,11 @@ def intersection(nums: list[list[int]]) -> list[int]:
     for key, val in hash_map.items():
         if val == length_nums:
             intersection_vals.append(key)
-    print(f"hash map: {hash_map}")
-    print(f"intersection vals: {intersection_vals}")
     return intersection_vals
 
 '''Complexity Analysis: 
 Time Complexity: O(N)
-Space Complexity: O(N)'''
+Space Complexity: O(1)'''
 
 # Testcase
 nums1 = [[3,1,2,4,5],[1,2,3,4],[3,4,5,6]]
