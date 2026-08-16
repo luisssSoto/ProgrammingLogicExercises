@@ -1,6 +1,6 @@
 # 560. Subarray Sum Equals K
 
-def subarraySum(nums: list[int], k: int) -> int:
+def subarray_sum(nums: list[int], k: int) -> int:
     from collections import defaultdict
     count_vals = defaultdict(int)
     curr = count = 0
