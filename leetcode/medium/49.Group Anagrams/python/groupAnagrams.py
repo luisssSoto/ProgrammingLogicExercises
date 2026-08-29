@@ -1,18 +1,17 @@
 """49. Group Anagrams"""
 
-def groupAnagrams(strs):
-        anagrams_dict = {}
-        for word in strs:
-            sort_word = sorted(word)
-            sort_word = "".join(sort_word)
-            if sort_word in anagrams_dict:
-                anagrams_dict[sort_word].append(word)
-            else:
-                anagrams_dict[sort_word] = []
-                anagrams_dict[sort_word].append(word)
-        anagrams_list = []
-        for val in anagrams_dict.values():
-            anagrams_list.append(val)
+def group_anagrams(strs: list[str]) -> list[list[str]]:
+    anagrams = {}
+    for word in strs:
+        sorted_word = "".join(sorted(word))
+        if sorted_word not in anagrams:
+            anagrams[sorted_word] = [word]
+        else:
+            anagrams[sorted_word].append(word)
+    ans = []
+    for key in anagrams:
+        ans.append(anagrams[key])
+    return ans
 
 '''Complexity Analysis:
 Time Complexity: O(N * Klogk): where N is the length of strs, and 
