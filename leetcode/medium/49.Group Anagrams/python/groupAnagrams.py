@@ -1,20 +1,15 @@
 """49. Group Anagrams"""
 
 def group_anagrams(strs: list[str]) -> list[list[str]]:
-    anagrams = {}
+    from collections import defaultdict
+    anagrams = defaultdict(list)
     for word in strs:
         sorted_word = "".join(sorted(word))
-        if sorted_word not in anagrams:
-            anagrams[sorted_word] = [word]
-        else:
-            anagrams[sorted_word].append(word)
-    ans = []
-    for key in anagrams:
-        ans.append(anagrams[key])
-    return ans
+        anagrams[sorted_word].append(word)
+    return list(anagrams.values())
 
 '''Complexity Analysis:
-Time Complexity: O(N * Klogk): where N is the length of strs, and 
+Time Complexity: O(N * K log k): where N is the length of strs, and 
 K is the maximum length of a string in strs. The outer loop has complexity 
 O(N) as we iterate through each string. Then, we sort each string in O(KlogK) 
 time.

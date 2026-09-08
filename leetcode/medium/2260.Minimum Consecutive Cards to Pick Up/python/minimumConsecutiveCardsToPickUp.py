@@ -1,20 +1,14 @@
 # 2260.Minimum Consecutive Cards to Pick Up
 
 def minimum_card_pick_up(cards: list[int]) -> int:
-    val_idx = {}
-    ans = len(cards)
+    from collections import defaultdict
+    val_idx = defaultdict(int)
+    ans = float('inf')
     for i in range(len(cards)):
-        if cards[i] not in val_idx:
-            val_idx[cards[i]] = i
-        else:
-            diff = i - val_idx[cards[i]]
-            if diff < ans:
-                ans = diff
-            val_idx[cards[i]] = i
-    if ans == len(cards):
-        return -1
-    else:
-        return ans + 1
+        if cards[i] in val_idx:
+            ans = min(ans, i - val_idx[cards[i]] + 1)
+        val_idx[cards[i]] = i
+    return ans if ans < float('inf') else - 1
 
 '''Complexity Analysis:
 Time Complexity: O(N)
