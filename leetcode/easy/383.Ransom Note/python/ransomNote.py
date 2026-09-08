@@ -74,3 +74,20 @@ print(ransom_note(test1, test2))
 #   else break and return False
 
 #4. Practice the dictionary, coding
+
+def can_construct(ransomNote: str, magazine: str) -> bool:
+        from collections import defaultdict
+        ransom_dic = defaultdict(int)
+        for letter in ransomNote:
+            ransom_dic[letter] += 1
+        magazine_dic = defaultdict(int)
+        for letter in magazine:
+            magazine_dic[letter] += 1
+        for key in ransom_dic:
+            if ransom_dic[key] > magazine_dic[key]:
+                return False
+        return True
+
+'''Complexity Analysis:
+Time Complexity: O(N + M)
+Space Complexity: O(1)'''
