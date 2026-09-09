@@ -29,3 +29,16 @@ def num_jewesl_in_stones(jewels: str, stones: str) -> int:
 Time Complexity: O(N + M)
 Space Complexity: O(N)'''
 
+def num_jewels_in_stones(jewels: str, stones: str) -> int:
+    from collections import defaultdict
+    stones_dic = defaultdict(int)
+    ans = 0
+    for stone in stones:
+        stones_dic[stone] += 1
+    for jewel in jewels:
+        ans += stones_dic[jewel]
+    return ans
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(N)'''
