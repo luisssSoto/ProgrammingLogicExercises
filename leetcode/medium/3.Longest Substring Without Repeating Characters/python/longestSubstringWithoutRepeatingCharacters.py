@@ -57,3 +57,25 @@ def length_of_longest_substring(s: str) -> int:
 '''Complexity Analysis:
 Time Complexity: O(N)
 Space Complexity: O(N)'''
+
+def length_of_longest_substring(s: str) -> int:
+    from collections import defaultdict
+    occurrences = defaultdict(int)
+    max_len = curr_len = left = right = 0
+    while right < len(s):
+        occurrences[s[right]] += 1
+        while occurrences[s[right]] > 1:
+                curr_len -= 1
+                occurrences[s[left]] -= 1
+                left += 1
+        curr_len += 1
+        max_len = max(max_len, curr_len)
+        right += 1
+    return max_len
+
+s1 = "pwwkewrzzabcdef"
+print(length_of_longest_substring(s1))
+
+'''Complexity Analysis:
+Time Complexity: O(N)
+Space Complexity: O(min(M,N))'''
